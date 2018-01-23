@@ -96,6 +96,8 @@ Plugin 'neocomplcache'
 Plugin 'SrcExpl'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " ==============================================================================
@@ -125,11 +127,19 @@ let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
 nnoremap <C-I> <C-W>j:call g:SrcExpl_Jump()<CR>
 nnoremap <C-O> :call g:SrcExpl_GoBack()<CR>
 
+set term=xterm-256color
+set t_Co=256
 let g:neocomplcache_enable_at_startup = 1
-
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='hybrid'
+let g:airline_theme='light'
 set laststatus=2
+
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlpl_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svm)$',
+	\ 'file': '\v\.(S|o|so)$',
+	\ 'link': 'some_bad_symbolic_links',
+	\ }
 
 " end of file
 
