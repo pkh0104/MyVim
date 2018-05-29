@@ -79,6 +79,13 @@ hi PmenuSbar ctermbg=blue
 
 set tags=./tags
 set tags+=$HOME/Study/OpenGL/SimpleCube/tags
+set tags+=$HOME/Projects/application/tags
+set tags+=$HOME/Projects/pgstools_v30/tags
+set tags+=$HOME/Projects/hkmc_gen6_pgs_lib/tags
+"set tags+=$HOME/build-coconut/vendor/nvidia/drive-t186ref-linux/samples/opengles2/tags
+"set tags+=$HOME/build-coconut/vendor/nvidia/drive-t186ref-linux/samples/nvmedia/ipp_yuv_gen2_pgs/tags
+"set tags+=$HOME/build-coconut/vendor/nvidia/drive-t186ref-linux/samples/nvmedia/pgslib/tags
+"set tags+=$HOME/build-coconut/vendor/nvidia/drive-t186ref-linux/samples/nvmedia/pgslib_180406/tags
 
 " ==============================================================================
 " Vundle
@@ -140,6 +147,17 @@ let g:ctrlpl_custom_ignore = {
 	\ 'file': '\v\.(S|o|so)$',
 	\ 'link': 'some_bad_symbolic_links',
 	\ }
+
+set csto=0
+set cst
+set nocsverb
+if filereadable("./cscope.out")
+	cs add cscope.out
+else 
+	cs add /usr/src/linux/cscope.out
+endif
+set csverb
+
 
 " end of file
 
