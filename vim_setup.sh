@@ -8,7 +8,7 @@ sudo apt remove vim vim-runtime gvim -y
 
 sudo apt install -y libncurses5-dev \
                     libncursesw5-dev \
-		    libgnome2-dev \ 
+		    libgnome2-dev \
 		    libgnomeui-dev \
 		    libgtk2.0-dev \
 		    libatk1.0-dev \
@@ -18,7 +18,7 @@ sudo apt install -y libncurses5-dev \
 		    libxpm-dev \
 		    libxt-dev \
 		    build-essential \
-		    python-dev\
+		    python-dev \
 		    python3-dev \
 		    ruby-dev \
 		    lua5.1 \
