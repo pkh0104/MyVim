@@ -28,6 +28,7 @@ sudo apt install -y libncurses5-dev \
 		    wget \
 		    ctags \
 		    cscope \
+			cmake3 \
 		    npm
 
 git clone https://github.com/vim/vim.git
@@ -85,9 +86,16 @@ vim +VundleInstall +qall
 echo '---------------------------- clang installation'
 UBUNTU_VERSION=$(lsb_release -a 2>/dev/null | grep Release | awk '{print $2}')
 CLANG_BINARY="clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-${UBUNTU_VERSION}"
-wget http://releases.llvm.org/9.0.0/$CLANG_BINARY.tar.xz
-xz -d $CLANG_BINARY.tar.xz
-tar xf $CLANG_BINARY.tar
+if [ ! -f $CLANG_BINARY.tar ]; then
+	wget http://releases.llvm.org/9.0.0/$CLANG_BINARY.tar.xz
+	xz -d $CLANG_BINARY.tar.xz
+fi
+if [ ! -d $CLANG_BINARY ]; then
+	tar xf $CLANG_BINARY.tar
+fi
+if [ ! -d $CLANG_BINARY ]; then
+	exit -1
+fi
 
 echo '---------------------------- YouCompleteMe installation'
 DYN=$(vim --version | grep dyn | grep python | wc -l)
