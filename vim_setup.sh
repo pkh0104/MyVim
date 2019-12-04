@@ -116,4 +116,5 @@ cd regex_build
 cmake -G "Unix Makefiles" . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/cregex
 cmake --build . --target _regex
 cd ~/.vim/bundle/YouCompleteMe
+npm config set strict-ssl false
 ./install.py --clang-completer --js-completer
