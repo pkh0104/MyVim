@@ -22,11 +22,11 @@ sudo apt install -y libncurses5-dev \
 		    python3-dev \
 		    ruby-dev \
 		    lua5.1 \
-		    liblua5.1-dev \
+		    liblua5.1-0-dev \
 		    libperl-dev \
 		    git \
 		    wget \
-		    ctags \
+		    exuberant-ctags \
 		    cscope \
 			cmake3 \
 		    npm
@@ -35,8 +35,8 @@ git clone https://github.com/vim/vim.git
 
 cd ./vim
 
-PYTHON2VER=$(python2 --version | awk '{print $2}' | awk -F. '{print $1"."$2}')
-PYTHON3VER=$(python3 --version | awk '{print $2}' | awk -F. '{print $1"."$2}')
+PYTHON2VER=$(python2 -c 'import sys; print(sys.version_info[0]+sys.version_info[1]*0.1)')
+PYTHON3VER=$(python3 -c 'import sys; print(sys.version_info[0]+sys.version_info[1]*0.1)')
 
 ./configure --with-features=huge \
             --enable-multibyte \
@@ -50,7 +50,7 @@ PYTHON3VER=$(python3 --version | awk '{print $2}' | awk -F. '{print $1"."$2}')
 	    --prefix=/usr/local \
 	    --with-tlib=ncurses
 
-make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
+make VIMRUNTIMEDIR=/usr/local/share/vim/vim$(grep " for version" README.txt | awk '{print $4}' | awk -F. '{print $1$2}')
 sudo apt install checkinstall
 sudo checkinstall
 #spawn "sudo checkinstall"
