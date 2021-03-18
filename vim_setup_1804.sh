@@ -29,7 +29,11 @@ sudo apt install -y libncurses5-dev \
 		    exuberant-ctags \
 		    cscope \
 			cmake \
-		    npm
+		    npm \
+			g++-8
+
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 700 --slave /usr/bin/g++ g++ /usr/bin/g++-7
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 800 --slave /usr/bin/g++ g++ /usr/bin/g++-8
 
 git clone https://github.com/vim/vim.git
 
